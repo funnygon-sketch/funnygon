@@ -32,7 +32,7 @@ HOLIDAY_API_URL = (
 )
 
 # ── 출력 경로 ────────────────────────────────────────────
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "docs")
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "docs")
 GAMES_JSON = os.path.join(OUTPUT_DIR, "_games.json")
 ICS_PATH = os.path.join(OUTPUT_DIR, "hanwha.ics")
 
