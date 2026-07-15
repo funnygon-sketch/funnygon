@@ -2,8 +2,8 @@ name: Update KBO calendar
 
 on:
   schedule:
-    - cron: "0 21 * * *"  # 매일 UTC 21:00 = KST 06:00
-  workflow_dispatch: {}    # 수동 실행 버튼도 사용 가능
+    - cron: "0 21 * * *"
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -22,15 +22,15 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: KBO 일정 수집
-        run: python scripts/crawl_kbo.py
+        run: python crawl_kbo.py
 
       - name: 공휴일 수집
         env:
           HOLIDAY_API_KEY: ${{ secrets.HOLIDAY_API_KEY }}
-        run: python scripts/fetch_holidays.py
+        run: python fetch_holidays.py
 
       - name: ICS 생성
-        run: python scripts/generate_ics.py
+        run: python generate_ics.py
 
       - name: 변경사항 커밋
         run: |
