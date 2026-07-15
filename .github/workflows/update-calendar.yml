@@ -1,4 +1,4 @@
-yamlname: Update KBO calendar
+name: Update KBO calendar
 
 on:
   schedule:
