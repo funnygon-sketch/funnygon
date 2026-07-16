@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>한화이글스 게임데이</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="한화 게임데이">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#12151B">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #12151B;
+    --panel: #1B2028;
+    --panel-2: #212833;
+    --line: #2A313D;
+    --orange: #FF7A00;
+    --orange-dim: #C9600A;
+    --cream: #F5F2EA;
+    --muted: #8B93A1;
+    --away: #4C5C74;
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--cream);
+    font-family:-apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  body{padding-bottom:56px;}
+
+  .topbar{
+    display:flex;align-items:center;gap:10px;
+    padding:calc(env(safe-area-inset-top) + 16px) 20px 12px;
+  }
+  .topbar img{width:30px;height:30px;border-radius:8px;}
+  .topbar h1{font-size:15px;font-weight:700;letter-spacing:.02em;margin:0;color:var(--muted);}
+  .topbar .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);
+    box-shadow:0 0 8px var(--orange);}
+
+  main{padding:4px 20px 20px;max-width:520px;margin:0 auto;}
+
+  /* ---- 스코어보드 히어로 ---- */
+  .scoreboard{
+    position:relative;
+    background:
+      linear-gradient(180deg, var(--panel-2), var(--panel));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 20px 20px;
+    overflow:hidden;
+    margin-top:8px;
+  }
+  .scoreboard::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+    pointer-events:none;
+  }
+  .sb-label{
+    font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .sb-badge{
+    font-size:10px;padding:3px 8px;border-radius:20px;border:1px solid var(--line);
+    letter-spacing:.05em;
+  }
+  .sb-badge.home{color:var(--orange);border-color:var(--orange-dim);}
+  .sb-badge.away{color:#AEB9C9;border-color:var(--away);}
+
+  .dday{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:64px;
+    line-height:1;
+    color:var(--orange);
+    text-shadow:0 0 18px rgba(255,122,0,.45), 0 0 2px rgba(255,122,0,.8);
+    margin:14px 0 6px;
+    letter-spacing:-0.02em;
+  }
+  .dday span.unit{font-size:22px;margin-left:6px;color:var(--orange-dim);}
+
+  .matchup{font-size:20px;font-weight:700;margin:6px 0 2px;}
+  .matchup .vs{color:var(--muted);font-weight:400;margin:0 6px;}
+  .meta-row{
+    display:flex;gap:14px;margin-top:10px;font-size:13px;color:var(--muted);
+    font-family:'Space Mono', monospace;
+  }
+  .meta-row b{color:var(--cream);font-weight:700;}
+
+  /* ---- 티켓팅 카드 ---- */
+  .ticket-card{
+    margin-top:14px;
+    background:var(--panel);
+    border:1px solid var(--orange-dim);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+  }
+  .ticket-card .t-label{font-size:11px;letter-spacing:.1em;color:var(--orange);text-transform:uppercase;}
+  .ticket-card .t-main{font-size:15px;font-weight:700;margin-top:4px;}
+  .ticket-card .t-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+  .ticket-card a{
+    flex-shrink:0;
+    background:var(--orange);color:#1A0E00;font-weight:700;font-size:13px;
+    padding:9px 14px;border-radius:10px;text-decoration:none;
+  }
+  .ticket-card.open a{background:var(--orange);}
+  .ticket-card.waiting{border-color:var(--line);}
+  .ticket-card.waiting a{background:var(--panel-2);color:var(--muted);border:1px solid var(--line);}
+
+  /* ---- 일정 리스트 ---- */
+  .section-title{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    margin:28px 4px 10px;
+  }
+  .game-row{
+    display:flex;align-items:center;gap:12px;
+    padding:13px 14px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin-bottom:8px;
+  }
+  .game-row .gdate{
+    font-family:'Space Mono', monospace;
+    font-size:13px;color:var(--muted);width:58px;flex-shrink:0;line-height:1.3;
+  }
+  .game-row .gdate b{display:block;color:var(--cream);font-size:15px;}
+  .game-row .gbadge{
+    width:5px;align-self:stretch;border-radius:3px;flex-shrink:0;
+  }
+  .game-row .gbadge.home{background:var(--orange);}
+  .game-row .gbadge.away{background:var(--away);}
+  .game-row .ginfo{flex:1;min-width:0;}
+  .game-row .gopp{font-size:14px;font-weight:700;}
+  .game-row .gwhere{font-size:12px;color:var(--muted);margin-top:2px;}
+  .game-row .gtime{
+    font-family:'Space Mono', monospace;font-size:13px;color:var(--muted);flex-shrink:0;
+  }
+
+  .empty{color:var(--muted);font-size:13px;padding:20px 4px;text-align:center;}
+
+  /* ---- 홈 화면 추가 안내 ---- */
+  .addhome{
+    position:fixed;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 12px);
+    max-width:488px;margin:0 auto;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:14px;
+    padding:12px 14px;font-size:12.5px;color:var(--muted);
+    display:flex;align-items:center;gap:10px;
+  }
+  .addhome b{color:var(--cream);}
+  .addhome .x{margin-left:auto;color:var(--muted);font-size:16px;padding:2px 6px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="icons/icon-192.png" alt="">
+  <h1>HANWHA EAGLES · GAMEDAY</h1>
+  <span class="dot"></span>
+</div>
+
+<main id="app">
+  <div class="empty">일정을 불러오는 중...</div>
+</main>
+
+<div class="addhome" id="addhome" style="display:none;">
+  <span>📲</span>
+  <span><b>홈 화면에 추가</b>하면 앱처럼 바로 열 수 있어요 — 공유 버튼 → 홈 화면에 추가</span>
+  <span class="x" id="addhome-close">✕</span>
+</div>
+
+<script>
+const TEAM_KO = {
+  Hanwha:"한화 이글스", Kiwoom:"키움 히어로즈", KT:"KT 위즈", LG:"LG 트윈스",
+  Lotte:"롯데 자이언츠", Samsung:"삼성 라이온즈", Doosan:"두산 베어스",
+  NC:"NC 다이노스", Kia:"KIA 타이거즈", KIA:"KIA 타이거즈", SSG:"SSG 랜더스"
+};
+const STADIUM_KO = {
+  "Daejeon":"대전", "Seoul-Jamsil":"잠실", "Incheon-Munhak":"인천 문학",
+  "Changwon":"창원", "Daegu":"대구", "Gwangju":"광주", "Suwon":"수원",
+  "Gocheok":"고척", "Busan":"사직", "Sajik":"사직"
+};
+const TICKET_OPEN_DAYS_BEFORE = 7;
+const TICKET_LINKS = [
+  {name:"티켓링크", url:"https://www.ticketlink.co.kr"},
+  {name:"구단 홈페이지", url:"https://www.hanwhaeagles.co.kr/ticketInfo.do"}
+];
+
+function koTeam(code){ return TEAM_KO[code] || code; }
+function koStadium(name){ return STADIUM_KO[name] || name || ""; }
+
+// 화면에 표시하는 값은 항상 "한국 기준 벽시계 시각"이어야 하므로,
+// Date 객체는 now와의 비교/디데이 계산 같은 절대 시각 연산에만 쓰고,
+// 실제 화면 표기는 원본 문자열(y/m/d, HH:MM)에서 직접 뽑아 쓴다.
+// (기기가 해외 시간대로 설정돼 있어도 항상 KST 그대로 보이게 하기 위함)
+function gameDateObj(g){
+  const y = g.date.slice(0,4), m = g.date.slice(4,6), d = g.date.slice(6,8);
+  const [hh, mm] = (g.time || "18:30").split(":");
+  return new Date(`${y}-${m}-${d}T${hh}:${mm}:00+09:00`);
+}
+function weekdayKo(y, m, d){
+  // 시각 정보 없이 순수 날짜만으로 요일 계산 (UTC 기준 자정으로 고정해 타임존 영향 제거)
+  const days = ["일","월","화","수","목","금","토"];
+  return days[new Date(Date.UTC(y, m-1, d)).getUTCDay()];
+}
+function fmtMDFromParts(y, m, d){
+  return `${m}/${d}(${weekdayKo(y, m, d)})`;
+}
+function fmtMD(g){
+  const y = +g.date.slice(0,4), m = +g.date.slice(4,6), d = +g.date.slice(6,8);
+  return fmtMDFromParts(y, m, d);
+}
+function fmtHM(g){
+  return g.time && g.time.length === 5 ? g.time : "18:30";
+}
+function ticketOpenParts(g){
+  // 티켓팅 오픈은 항상 경기 N일 전 오전 11시(고정)이므로, 날짜만 Date로 계산하고
+  // 시각(11:00)은 고정값을 그대로 쓴다 — 시간대 영향을 받지 않도록.
+  const y = +g.date.slice(0,4), m = +g.date.slice(4,6), d = +g.date.slice(6,8);
+  const base = new Date(Date.UTC(y, m-1, d));
+  base.setUTCDate(base.getUTCDate() - TICKET_OPEN_DAYS_BEFORE);
+  return { y: base.getUTCFullYear(), m: base.getUTCMonth()+1, d: base.getUTCDate() };
+}
+function ticketOpenObj(g){
+  // now와 비교하기 위한 절대 시각(오전 11시 KST)
+  const p = ticketOpenParts(g);
+  const pad = n => String(n).padStart(2, "0");
+  return new Date(`${p.y}-${pad(p.m)}-${pad(p.d)}T11:00:00+09:00`);
+}
+function ddayLabel(target, now){
+  const diffMs = target - now;
+  const diffDay = Math.ceil(diffMs / 86400000);
+  if (diffDay <= 0) return "D-DAY";
+  return "D-" + diffDay;
+}
+
+async function main(){
+  const app = document.getElementById("app");
+  let games = [];
+  try{
+    const res = await fetch("./_games.json", {cache:"no-store"});
+    games = await res.json();
+  }catch(e){
+    app.innerHTML = `<div class="empty">일정을 불러오지 못했어요.<br>잠시 후 새로고침 해주세요.</div>`;
+    return;
+  }
+
+  const now = new Date();
+  const upcoming = games
+    .map(g => ({...g, _dt: gameDateObj(g)}))
+    .filter(g => g._dt >= now)
+    .sort((a,b) => a._dt - b._dt);
+
+  if (upcoming.length === 0){
+    app.innerHTML = `<div class="empty">예정된 경기가 없어요.</div>`;
+    return;
+  }
+
+  const next = upcoming[0];
+  const nextHome = upcoming.find(g => g.is_home);
+
+  let html = "";
+
+  // ---- 히어로 스코어보드 ----
+  html += `
+    <div class="scoreboard">
+      <div class="sb-label">
+        <span>다음 경기</span>
+        <span class="sb-badge ${next.is_home ? "home":"away"}">${next.is_home ? "HOME":"AWAY"}</span>
+      </div>
+      <div class="dday">${ddayLabel(next._dt, now)}</div>
+      <div class="matchup">한화 이글스<span class="vs">vs</span>${koTeam(next.is_home ? next.away : next.home)}</div>
+      <div class="meta-row">
+        <span><b>${fmtMD(next)}</b></span>
+        <span><b>${fmtHM(next)}</b></span>
+        <span>${koStadium(next.stadium)}</span>
+      </div>
+    </div>
+  `;
+
+  // ---- 티켓팅 카드 (다음 홈경기 기준) ----
+  if (nextHome){
+    const openDt = ticketOpenObj(nextHome);
+    const openParts = ticketOpenParts(nextHome);
+    const isOpen = now >= openDt;
+    html += `
+      <div class="ticket-card ${isOpen ? "open":"waiting"}">
+        <div>
+          <div class="t-label">${isOpen ? "예매 오픈됨" : "티켓팅 예상 오픈"}</div>
+          <div class="t-main">${fmtMD(nextHome)} 홈경기 · ${koTeam(nextHome.away)}전</div>
+          <div class="t-sub">${isOpen ? "예매처에서 바로 확인하세요" : fmtMDFromParts(openParts.y, openParts.m, openParts.d) + " 오전 11시 예상 (구단 공지로 최종 확인)"}</div>
+        </div>
+        ${TICKET_LINKS[0] ? `<a href="${TICKET_LINKS[0].url}" target="_blank" rel="noopener">예매</a>` : ""}
+      </div>
+    `;
+  }
+
+  // ---- 예정 경기 리스트 ----
+  html += `<div class="section-title">예정된 경기</div>`;
+  upcoming.slice(0, 14).forEach(g => {
+    const y = +g.date.slice(0,4), m = +g.date.slice(4,6), d = +g.date.slice(6,8);
+    html += `
+      <div class="game-row">
+        <div class="gdate"><b>${m}/${d}</b>${weekdayKo(y,m,d)}요일</div>
+        <div class="gbadge ${g.is_home ? "home":"away"}"></div>
+        <div class="ginfo">
+          <div class="gopp">${g.is_home ? "홈":"원정"} · ${koTeam(g.is_home ? g.away : g.home)}</div>
+          <div class="gwhere">${koStadium(g.stadium)}</div>
+        </div>
+        <div class="gtime">${fmtHM(g)}</div>
+      </div>
+    `;
+  });
+
+  app.innerHTML = html;
+
+  // 홈 화면 추가 안내 (standalone 모드가 아닐 때만)
+  const isStandalone = window.navigator.standalone === true;
+  if (!isStandalone && !sessionStorage.getItem("addhome-dismissed")){
+    document.getElementById("addhome").style.display = "flex";
+  }
+  document.getElementById("addhome-close").onclick = () => {
+    document.getElementById("addhome").style.display = "none";
+    sessionStorage.setItem("addhome-dismissed", "1");
+  };
+}
+
+main();
+</script>
+</body>
+</html>
