@@ -39,10 +39,15 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
     }
     try:
         res = requests.post(SCHEDULE_URL, data=payload, headers=HEADERS, timeout=10)
+        print(f"[디버그] {year}-{month:02d} series={series_id} status={res.status_code}", file=sys.stderr)
         res.raise_for_status()
         data = res.json()
     except Exception as e:
         print(f"[경고] {year}-{month:02d} (series {series_id}) 요청 실패: {e}", file=sys.stderr)
+        try:
+            print(f"[디버그] 응답 본문 일부: {res.text[:300]}", file=sys.stderr)
+        except Exception:
+            pass
         return []
 
     rows = data.get("rows") or data.get("row") or data.get("d") or []
@@ -51,10 +56,9 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
             rows = json.loads(rows)
         except json.JSONDecodeError:
             rows = []
-    if not rows:
-        os.makedirs("/tmp", exist_ok=True)
-        with open(f"/tmp/kbo_raw_{year}_{month:02d}_{series_id}.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+    if not rows and month == 4 and series_id == 1:
+        # 4월 정규시즌 딱 한 케이스만 응답 전체를 로그에 출력해서 구조 확인
+        print(f"[디버그] 응답 전체(4월/정규시즌): {json.dumps(data, ensure_ascii=False)[:1000]}", file=sys.stderr)
     return rows
 
 
