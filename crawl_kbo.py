@@ -8,9 +8,9 @@ KBO 공식 사이트에서 한화이글스 경기 일정을 가져옵니다.
 개인적/비상업적 용도로만 사용하고, 짧은 시간에 과도한 요청을 보내지 마세요.
 """
 import json
+import os
 import sys
 import time
-from datetime import datetime
 
 import requests
 
@@ -22,14 +22,18 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "X-Requested-With": "XMLHttpRequest",
     "Referer": "https://www.koreabaseball.com/Schedule/Schedule.aspx",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 }
 
+# 0=시범경기, 1=정규시즌, 3=포스트시즌. 한 번에 하나씩만 보내야 서버가 받아줍니다.
+SERIES_IDS = [1, 0, 3]
 
-def fetch_month(year: int, month: int) -> list[dict]:
-    """해당 연/월의 전체 경기 목록을 가져옵니다 (실패 시 빈 리스트)."""
+
+def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
+    """해당 연/월/시리즈의 전체 경기 목록을 가져옵니다 (실패 시 빈 리스트)."""
     payload = {
-        "leId": 1,       # 1 = KBO 리그
-        "srId": "0,1,3", # 시범경기(0), 정규시즌(1), 포스트시즌(3) — 필요없는 시리즈는 빼도 됨
+        "leId": 1,
+        "srId": series_id,
         "seasonId": year,
         "gameMonth": f"{month:02d}",
     }
@@ -38,7 +42,7 @@ def fetch_month(year: int, month: int) -> list[dict]:
         res.raise_for_status()
         data = res.json()
     except Exception as e:
-        print(f"[경고] {year}-{month:02d} 요청 실패: {e}", file=sys.stderr)
+        print(f"[경고] {year}-{month:02d} (series {series_id}) 요청 실패: {e}", file=sys.stderr)
         return []
 
     rows = data.get("rows") or data.get("row") or data.get("d") or []
@@ -48,12 +52,8 @@ def fetch_month(year: int, month: int) -> list[dict]:
         except json.JSONDecodeError:
             rows = []
     if not rows:
-        print(
-            f"[안내] {year}-{month:02d} 응답에서 경기 데이터를 찾지 못했습니다. "
-            "response 구조가 바뀐 것일 수 있습니다 — 아래 raw_response 파일을 확인하세요.",
-            file=sys.stderr,
-        )
-        with open(f"/tmp/kbo_raw_{year}_{month:02d}.json", "w", encoding="utf-8") as f:
+        os.makedirs("/tmp", exist_ok=True)
+        with open(f"/tmp/kbo_raw_{year}_{month:02d}_{series_id}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     return rows
 
@@ -81,11 +81,14 @@ def filter_team_games(rows: list[dict], team_code: str) -> list[dict]:
 
 
 def main():
+    os.makedirs(config.OUTPUT_DIR, exist_ok=True)  # docs 폴더가 없으면 미리 생성
+
     all_games = []
     for month in range(1, 13):
-        rows = fetch_month(config.SEASON_YEAR, month)
-        all_games.extend(filter_team_games(rows, config.TEAM_CODE))
-        time.sleep(1)  # 서버 부하 방지용 딜레이
+        for series_id in SERIES_IDS:
+            rows = fetch_month(config.SEASON_YEAR, month, series_id)
+            all_games.extend(filter_team_games(rows, config.TEAM_CODE))
+            time.sleep(1)  # 서버 부하 방지용 딜레이
 
     with open(config.GAMES_JSON, "w", encoding="utf-8") as f:
         json.dump(all_games, f, ensure_ascii=False, indent=2)
