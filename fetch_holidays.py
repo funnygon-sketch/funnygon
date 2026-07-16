@@ -3,10 +3,11 @@
 API 키는 data.go.kr에서 무료로 발급받아 환경변수 HOLIDAY_API_KEY로 넘겨주세요.
 """
 import json
+import os
 import sys
 
 import requests
-import os
+
 import config
 
 
@@ -44,7 +45,8 @@ def fetch_holidays(year: int) -> list[dict]:
 
 
 def main():
-  os.makedirs(os.path.dirname(config.GAMES_JSON), exist_ok=True)  
+    os.makedirs(config.OUTPUT_DIR, exist_ok=True)
+
     if not config.HOLIDAY_API_KEY:
         print("HOLIDAY_API_KEY 환경변수가 없습니다. data.go.kr에서 키를 발급받아 설정하세요.", file=sys.stderr)
         sys.exit(1)
