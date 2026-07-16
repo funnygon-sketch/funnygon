@@ -36,7 +36,7 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
         "srIdList": series_id,
         "seasonId": year,
         "gameMonth": f"{month:02d}",
-        "teamId": "",
+        "teamId": "HH",
     }
     try:
         res = requests.post(SCHEDULE_URL, data=payload, headers=HEADERS, timeout=10)
@@ -57,9 +57,8 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
             rows = json.loads(rows)
         except json.JSONDecodeError:
             rows = []
-    if not rows and month == 4 and series_id == 1:
-        # 4월 정규시즌 딱 한 케이스만 응답 전체를 로그에 출력해서 구조 확인
-        print(f"[디버그] 응답 전체(4월/정규시즌): {json.dumps(data, ensure_ascii=False)[:1000]}", file=sys.stderr)
+    if not rows and series_id == 1:
+        print(f"[디버그] 응답 전체({year}-{month:02d}): {json.dumps(data, ensure_ascii=False)[:500]}", file=sys.stderr)
     return rows
 
 
