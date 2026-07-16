@@ -36,6 +36,7 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
         "srIdList": series_id,
         "seasonId": year,
         "gameMonth": f"{month:02d}",
+        "teamId": "",
     }
     try:
         res = requests.post(SCHEDULE_URL, data=payload, headers=HEADERS, timeout=10)
