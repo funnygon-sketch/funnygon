@@ -33,7 +33,7 @@ def fetch_month(year: int, month: int, series_id: int) -> list[dict]:
     """해당 연/월/시리즈의 전체 경기 목록을 가져옵니다 (실패 시 빈 리스트)."""
     payload = {
         "leId": 1,
-        "srId": series_id,
+        "srIdList": series_id,
         "seasonId": year,
         "gameMonth": f"{month:02d}",
     }
