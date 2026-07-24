@@ -968,7 +968,7 @@
     "time": "18:30",
     "home": "Kia",
     "away": "Hanwha",
-    "stadium": "Gwangju",
+    "stadium": "",
     "is_home": false
   },
   {
@@ -977,7 +977,7 @@
     "time": "18:30",
     "home": "Hanwha",
     "away": "LG",
-    "stadium": "Daejeon",
+    "stadium": "Daejeon Forecast Uncertain",
     "is_home": true
   },
   {
