@@ -1022,7 +1022,7 @@
     "time": "18:30",
     "home": "Hanwha",
     "away": "Lotte",
-    "stadium": "Daejeon",
+    "stadium": "",
     "is_home": true
   },
   {
@@ -1316,7 +1316,7 @@
   {
     "game_id": "13917",
     "date": "20260906",
-    "time": "14:00",
+    "time": "17:00",
     "home": "Lotte",
     "away": "Hanwha",
     "stadium": "Busan-Sajik",
