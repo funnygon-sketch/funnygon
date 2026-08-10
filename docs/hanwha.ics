@@ -2362,7 +2362,8 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[한화이글스] 원정경기 (Seoul-Jamsil)
+SUMMARY:[한화이글스] 원정경기 (Seoul-Jamsil Starters: Wang Yan-ch
+ eng vs. Gwak Been)
 DTSTART:20260811T190000
 DTEND:20260811T223000
 UID:game-13802@kbo-calendar
