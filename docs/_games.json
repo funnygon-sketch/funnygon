@@ -1163,10 +1163,10 @@
   {
     "game_id": "13832",
     "date": "20260818",
-    "time": "19:00",
+    "time": "18:30",
     "home": "Hanwha",
     "away": "Kia",
-    "stadium": "Daejeon Starters: Naile vs. Wang Yan-cheng",
+    "stadium": "",
     "is_home": true
   },
   {
@@ -1175,7 +1175,7 @@
     "time": "19:00",
     "home": "Hanwha",
     "away": "Kia",
-    "stadium": "Daejeon",
+    "stadium": "Daejeon Starters: Keisho Shirakawa vs. White",
     "is_home": true
   },
   {
@@ -1217,7 +1217,7 @@
   {
     "game_id": "13862",
     "date": "20260825",
-    "time": "19:00",
+    "time": "18:30",
     "home": "SSG",
     "away": "Hanwha",
     "stadium": "Incheon-Munhak",
@@ -1226,7 +1226,7 @@
   {
     "game_id": "13867",
     "date": "20260826",
-    "time": "19:00",
+    "time": "18:30",
     "home": "SSG",
     "away": "Hanwha",
     "stadium": "Incheon-Munhak",
@@ -1235,7 +1235,7 @@
   {
     "game_id": "13872",
     "date": "20260827",
-    "time": "19:00",
+    "time": "18:30",
     "home": "SSG",
     "away": "Hanwha",
     "stadium": "Incheon-Munhak",
@@ -1244,7 +1244,7 @@
   {
     "game_id": "13879",
     "date": "20260828",
-    "time": "19:00",
+    "time": "18:30",
     "home": "Hanwha",
     "away": "NC",
     "stadium": "Daejeon",
@@ -1253,7 +1253,7 @@
   {
     "game_id": "13884",
     "date": "20260829",
-    "time": "19:00",
+    "time": "18:00",
     "home": "Hanwha",
     "away": "NC",
     "stadium": "Daejeon",
@@ -1262,7 +1262,7 @@
   {
     "game_id": "13889",
     "date": "20260830",
-    "time": "19:00",
+    "time": "18:00",
     "home": "Hanwha",
     "away": "NC",
     "stadium": "Daejeon",
@@ -1271,7 +1271,7 @@
   {
     "game_id": "13892",
     "date": "20260901",
-    "time": "19:00",
+    "time": "18:30",
     "home": "KT",
     "away": "Hanwha",
     "stadium": "Suwon",
@@ -1280,7 +1280,7 @@
   {
     "game_id": "13897",
     "date": "20260902",
-    "time": "19:00",
+    "time": "18:30",
     "home": "KT",
     "away": "Hanwha",
     "stadium": "Suwon",
@@ -1289,7 +1289,7 @@
   {
     "game_id": "13902",
     "date": "20260903",
-    "time": "19:00",
+    "time": "18:30",
     "home": "KT",
     "away": "Hanwha",
     "stadium": "Suwon",
@@ -1298,7 +1298,7 @@
   {
     "game_id": "13907",
     "date": "20260904",
-    "time": "19:00",
+    "time": "18:30",
     "home": "Lotte",
     "away": "Hanwha",
     "stadium": "Busan-Sajik",
@@ -1307,7 +1307,7 @@
   {
     "game_id": "13912",
     "date": "20260905",
-    "time": "19:00",
+    "time": "17:00",
     "home": "Lotte",
     "away": "Hanwha",
     "stadium": "Busan-Sajik",
@@ -1316,7 +1316,7 @@
   {
     "game_id": "13917",
     "date": "20260906",
-    "time": "19:00",
+    "time": "17:00",
     "home": "Lotte",
     "away": "Hanwha",
     "stadium": "Busan-Sajik",
