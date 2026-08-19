@@ -1172,10 +1172,10 @@
   {
     "game_id": "13837",
     "date": "20260819",
-    "time": "19:00",
+    "time": "18:30",
     "home": "Hanwha",
     "away": "Kia",
-    "stadium": "Daejeon Starters: Keisho Shirakawa vs. White",
+    "stadium": "",
     "is_home": true
   },
   {
@@ -1184,7 +1184,7 @@
     "time": "19:00",
     "home": "Hanwha",
     "away": "Kia",
-    "stadium": "Daejeon",
+    "stadium": "Daejeon Starters: Hwang Dong-ha vs. Ryu Hyun-jin",
     "is_home": true
   },
   {
@@ -1193,7 +1193,7 @@
     "time": "19:00",
     "home": "Hanwha",
     "away": "LG",
-    "stadium": "Daejeon",
+    "stadium": "Daejeon Forecast Uncertain",
     "is_home": true
   },
   {
