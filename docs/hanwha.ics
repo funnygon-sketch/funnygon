@@ -2584,7 +2584,8 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[한화이글스] 원정경기 (Incheon-Munhak)
+SUMMARY:[한화이글스] 원정경기 (Incheon-Munhak Starters: White vs.
+  Kim Min-jun)
 DTSTART:20260825T183000
 DTEND:20260825T220000
 UID:game-13862@kbo-calendar
