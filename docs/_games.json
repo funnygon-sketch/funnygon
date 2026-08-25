@@ -1220,7 +1220,7 @@
     "time": "18:30",
     "home": "SSG",
     "away": "Hanwha",
-    "stadium": "Incheon-Munhak Starters: White vs. Kim Min-jun",
+    "stadium": "",
     "is_home": false
   },
   {
@@ -1229,7 +1229,7 @@
     "time": "18:30",
     "home": "SSG",
     "away": "Hanwha",
-    "stadium": "Incheon-Munhak",
+    "stadium": "Incheon-Munhak Starters: Ryu Hyun-jin vs. Choi Min-jun",
     "is_home": false
   },
   {
@@ -1320,6 +1320,159 @@
     "home": "Lotte",
     "away": "Hanwha",
     "stadium": "Busan-Sajik",
+    "is_home": false
+  },
+  {
+    "game_id": "13924",
+    "date": "20260908",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "Doosan",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13928",
+    "date": "20260909",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "LG",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13931",
+    "date": "20260910",
+    "time": "18:30",
+    "home": "SSG",
+    "away": "Hanwha",
+    "stadium": "Incheon-Munhak",
+    "is_home": false
+  },
+  {
+    "game_id": "13935",
+    "date": "20260911",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "NC",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13941",
+    "date": "20260913",
+    "time": "17:00",
+    "home": "Kia",
+    "away": "Hanwha",
+    "stadium": "Gwangju",
+    "is_home": false
+  },
+  {
+    "game_id": "13946",
+    "date": "20260915",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "KT",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13949",
+    "date": "20260916",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "KT",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13957",
+    "date": "20260918",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "Samsung",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13959",
+    "date": "20260919",
+    "time": "17:00",
+    "home": "LG",
+    "away": "Hanwha",
+    "stadium": "Seoul-Jamsil",
+    "is_home": false
+  },
+  {
+    "game_id": "13963",
+    "date": "20260920",
+    "time": "14:00",
+    "home": "LG",
+    "away": "Hanwha",
+    "stadium": "Seoul-Jamsil",
+    "is_home": false
+  },
+  {
+    "game_id": "13969",
+    "date": "20260922",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "Lotte",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13973",
+    "date": "20260923",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "Lotte",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "13978",
+    "date": "20260925",
+    "time": "17:00",
+    "home": "NC",
+    "away": "Hanwha",
+    "stadium": "Changwon",
+    "is_home": false
+  },
+  {
+    "game_id": "13981",
+    "date": "20260926",
+    "time": "17:00",
+    "home": "NC",
+    "away": "Hanwha",
+    "stadium": "Changwon",
+    "is_home": false
+  },
+  {
+    "game_id": "13984",
+    "date": "20260927",
+    "time": "17:00",
+    "home": "Lotte",
+    "away": "Hanwha",
+    "stadium": "Busan-Sajik",
+    "is_home": false
+  },
+  {
+    "game_id": "13988",
+    "date": "20260929",
+    "time": "18:30",
+    "home": "Samsung",
+    "away": "Hanwha",
+    "stadium": "Daegu",
+    "is_home": false
+  },
+  {
+    "game_id": "13993",
+    "date": "20260930",
+    "time": "18:30",
+    "home": "Samsung",
+    "away": "Hanwha",
+    "stadium": "Daegu",
     "is_home": false
   }
 ]
