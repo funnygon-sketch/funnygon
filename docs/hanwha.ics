@@ -2606,8 +2606,7 @@ TRIGGER:-PT2H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[한화이글스] 원정경기 (Incheon-Munhak Starters: Zimmerman
-  vs. Kim Keon-woo)
+SUMMARY:[한화이글스] 원정경기 ()
 DTSTART:20260827T183000
 DTEND:20260827T220000
 UID:game-13872@kbo-calendar
