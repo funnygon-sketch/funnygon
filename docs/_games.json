@@ -1262,10 +1262,10 @@
   {
     "game_id": "13889",
     "date": "20260830",
-    "time": "18:00",
+    "time": "18:30",
     "home": "Hanwha",
     "away": "NC",
-    "stadium": "Daejeon",
+    "stadium": "",
     "is_home": true
   },
   {
@@ -1473,6 +1473,60 @@
     "home": "Samsung",
     "away": "Hanwha",
     "stadium": "Daegu",
+    "is_home": false
+  },
+  {
+    "game_id": "14000",
+    "date": "20261001",
+    "time": "18:30",
+    "home": "Samsung",
+    "away": "Hanwha",
+    "stadium": "Daegu",
+    "is_home": false
+  },
+  {
+    "game_id": "14008",
+    "date": "20261003",
+    "time": "14:00",
+    "home": "Hanwha",
+    "away": "Kiwoom",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "14013",
+    "date": "20261004",
+    "time": "14:00",
+    "home": "Hanwha",
+    "away": "Kiwoom",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "14018",
+    "date": "20261005",
+    "time": "14:00",
+    "home": "Hanwha",
+    "away": "Kiwoom",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "14022",
+    "date": "20261006",
+    "time": "18:30",
+    "home": "Hanwha",
+    "away": "SSG",
+    "stadium": "Daejeon",
+    "is_home": true
+  },
+  {
+    "game_id": "14024",
+    "date": "20261007",
+    "time": "18:30",
+    "home": "Kiwoom",
+    "away": "Hanwha",
+    "stadium": "Seoul-Gocheok",
     "is_home": false
   }
 ]
