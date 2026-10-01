@@ -1472,7 +1472,7 @@
     "time": "18:30",
     "home": "Samsung",
     "away": "Hanwha",
-    "stadium": "Daegu",
+    "stadium": "",
     "is_home": false
   },
   {
@@ -1528,5 +1528,14 @@
     "away": "Hanwha",
     "stadium": "Seoul-Gocheok",
     "is_home": false
+  },
+  {
+    "game_id": "14033",
+    "date": "20261010",
+    "time": "17:00",
+    "home": "Hanwha",
+    "away": "NC",
+    "stadium": "Daejeon",
+    "is_home": true
   }
 ]
